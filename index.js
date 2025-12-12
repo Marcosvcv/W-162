@@ -1,7 +1,7 @@
-const jsonfile = require("jsonfile");
-const moment = require("moment");
-const simpleGit = require("simple-git");
-const random = require("random");
+import jsonfile from "jsonfile";
+import moment from "moment";
+import simpleGit from "simple-git";
+import random from "random";
 
 const path = "./data.json";
 function getRndInteger(min, max) {
@@ -16,9 +16,8 @@ const makeCommits = (n) => {
   counter++;
   console.log(`Commit #${counter}`);
   
-  const x = Math.floor(Math.random() * (54 + 1)); // Generates a random integer between 0 and 54
-  const y = Math.floor(Math.random() * (5 + 1));  // Generates a random integer between 0 and 5
-
+  const x = random.int(0, 54);
+  const y = random.int(0, 5);
   const date = moment()
     .subtract(getRndInteger(0,6), "y")
     .add(1, "d")
@@ -50,5 +49,6 @@ const makeCommits = (n) => {
   });
 };
 
-makeCommits(540);
+makeCommits(900);
+
 
